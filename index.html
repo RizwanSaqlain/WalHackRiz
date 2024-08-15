@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <!-- Placeholder for logo -->
+            <img src="images/Designer.jpeg" alt="Website Logo">
+            <span class="company-name">Swift Designs</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#">Contact Support</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-image">
+            <img src="images/sofatree.jpg" alt="Stylized Image">
+        </section>
+
+        <section id="products" class="products-section">
+            <h2>Our Products</h2>
+            <div class="product-container">
+                <div class="product">
+                    <img src="images/table1.jpg" alt="Product 1">
+                    <h3>Product 1</h3>
+                    <p>$29.99</p>
+                    <div class="product-buttons">
+                        <button class="view-360" onclick="openModal()">View in 360</button>
+                        <button class="buy">Buy</button>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="images/table2.jpg" alt="Product 2">
+                    <h3>Product 2</h3>
+                    <p>$39.99</p>
+                    <div class="product-buttons">
+                        <button class="view-360" onclick="openModal()">View in 360</button>
+                        <button class="buy">Buy</button>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="images/table3.jpg" alt="Product 3">
+                    <h3>Product 3</h3>
+                    <p>$49.99</p>
+                    <div class="product-buttons">
+                        <button class="view-360" onclick="openModal()">View in 360</button>
+                        <button class="buy">Buy</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal for 360 View -->
+    <!-- <div id="myModal" class="modal" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()" aria-label="Close">&times;</span>
+            <div id="threejs-container"></div>
+        </div>
+    </div> -->
+    
+    
+
+    <footer>
+        <p>&copy; 2024 My Website</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/loaders/RGBELoader.js" type="module"></script>
+    <script src="script.js"></script>
+   
+    
+    
+
+</body>
+</html>
