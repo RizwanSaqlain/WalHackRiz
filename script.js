@@ -46,6 +46,85 @@ function closeModal() {
     
 }
 
+// Toggle chat visibility
+// API endpoint URL
+const API_URL = 'http://localhost:3000/chat'; // Update with your server URL if different
+
+// Toggle chat visibility
+function toggleChat() {
+    const chatContainer = document.getElementById('chat-support');
+    chatContainer.classList.toggle('hidden');
+}
+
+// Send message in chat
+async function sendMessage(event) {
+    if (event.key === 'Enter') {
+        const input = document.getElementById('chat-input');
+        const message = input.value.trim();
+
+        if (message) {
+            // Add user message to chat
+            const userMessage = document.createElement('p');
+            userMessage.className = 'user-message';
+            userMessage.textContent = message;
+
+            const messagesContainer = document.querySelector('.messages');
+            messagesContainer.appendChild(userMessage);
+
+            // Clear input
+            input.value = '';
+
+            // Scroll to the bottom
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+            // Fetch response from the server
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ message: message }),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const data = await response.json();
+
+                // Add bot response to chat
+                const botMessage = document.createElement('p');
+                botMessage.className = 'bot-message';
+                botMessage.textContent = data.response;
+                messagesContainer.appendChild(botMessage);
+
+                // Scroll to the bottom
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            } catch (error) {
+                console.error('Error fetching the API response:', error);
+
+                // Handle error response
+                const errorMessage = document.createElement('p');
+                errorMessage.className = 'bot-message';
+                errorMessage.textContent = "Sorry, there was an error processing your message.";
+                messagesContainer.appendChild(errorMessage);
+
+                // Scroll to the bottom
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+        }
+    }
+}
+
+// Attach toggle to "Contact Support" link
+document.querySelector('a[href="#"]').addEventListener('click', (event) => {
+    event.preventDefault();
+    toggleChat();
+});
+
+
+
 // Basic Three.js setup
 function initializeThreeJS() {
     const scene = new THREE.Scene();
@@ -94,6 +173,15 @@ function initializeThreeJS() {
             object = model;
         });
     });
+    // First light (positioned at 5, 5, 5)
+    const light1 = new THREE.DirectionalLight(0xffffff, 0.8);
+    light1.position.set(5, 5, 5);
+    scene.add(light1);
+
+    // Second light (positioned opposite at -5, -5, -5)
+    const light2 = new THREE.DirectionalLight(0xffffff, 0.8);
+    light2.position.set(-5, -5, -5);
+    scene.add(light2);
 
     camera.position.set(3,3,3);
     controls.update()

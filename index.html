@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Basic Website</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <header>
         <div class="logo">
@@ -67,20 +69,35 @@
             <div id="threejs-container"></div>
         </div>
     </div> -->
-    
-    
+    <!-- Chat Support Section -->
+    <div id="chat-support" class="chat-container hidden">
+        <div class="chat-header">
+            <span>Support Chat</span>
+            <span class="close-chat" onclick="toggleChat()">&times;</span>
+        </div>
+        <div class="chat-body">
+            <div class="messages">
+                <p class="bot-message">Hello! How can I assist you today?</p>
+            </div>
+            <input type="text" id="chat-input" placeholder="Type your message..." onkeypress="sendMessage(event)">
+        </div>
+    </div>
+
+
 
     <footer>
         <p>&copy; 2024 My Website</p>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" type="module"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"
+        type="module"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js" type="module"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/loaders/RGBELoader.js" type="module"></script>
     <script src="script.js"></script>
-   
-    
-    
+
+
+
 
 </body>
+
 </html>
